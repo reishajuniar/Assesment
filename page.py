@@ -28,10 +28,12 @@ class MainPage(BasePage):
         element = self.driver.find_element(*MainPageLocators.GO_BUTTON)
         element.click()
 
-    def click_add_to_cart(self):
+    def click_add_to_cart(self, products):
         elements = self.driver.find_elements(*MainPageLocators.ADD_PRODUCT)
         for element in elements:
-            if element.is_enabled():
+            if element.is_enabled() and element.get_attribute("data-id-product") not in products:
+                new_product = [element.get_attribute("data-id-product")]
+                products.extend(new_product)
                 element.click()
                 break
 
@@ -65,4 +67,8 @@ class MainPage(BasePage):
 
     def click_confirm_order(self):
         element = self.driver.find_element(*MainPageLocators.CONFIRM_ORDER)
+        element.click()
+
+    def click_continue_shopping(self):
+        element = self.driver.find_element(*MainPageLocators.CONTINUE_SHOPPING)
         element.click()

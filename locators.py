@@ -11,3 +11,5 @@ class MainPageLocators(object):
     DELIVER_GOODS = (By.NAME,'processCarrier')
     BANK_WIRE = (By.CLASS_NAME,'bankwire')
     CONFIRM_ORDER = (By.XPATH,'//p[@id="cart_navigation"]/button')
+    CONTINUE_SHOPPING = (By.XPATH,'//*[@title="Continue shopping"]')
+    QTY = (By.XPATH,'//td[@class="cart_quantity text-center"]/input[1]')
